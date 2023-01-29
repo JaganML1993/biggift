@@ -4,6 +4,12 @@ if(isset($subpage)){
 }else{
   $subpage = '';
 }
+
+if(isset($title)){
+  $title = $title;
+}else{
+  $title = "Dashboard";
+}
 @endphp
 <!DOCTYPE html>
 <html
@@ -16,7 +22,7 @@ if(isset($subpage)){
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard</title>
+    <title>{{$title}}</title>
 
     <meta name="description" content="" />
 
@@ -79,6 +85,9 @@ if(isset($subpage)){
       .headerFilter{
         color: #696cff;
       }
+      a{
+        text-decoration: none !important;
+      }
     </style>
   </head>
 
@@ -92,7 +101,8 @@ if(isset($subpage)){
           <div class="app-brand demo">
             <a href="javascript:void(0);" class="app-brand-link">
               <span class="app-brand-logo demo">
-                <img src="{{ asset('/img/icons/Vyomann_Logo.png') }}" style="width:5%;"/>
+                <!-- <img src="{{ asset('/img/icons/Vyomann_Logo.png') }}" style="width:5%;"/> -->
+                <h4>BIGGIFT</h4>
               </span>
             </a>
 
@@ -110,6 +120,25 @@ if(isset($subpage)){
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">DASHBOARD</div>
               </a>
+            </li>
+
+            <li class="menu-item @if ($page == 'settings') active open @endif" >
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <div data-i18n="Layouts">SETTINGS</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item @if ($subpage == 'category') active open @endif">
+                  <a href="{{ route('settings.category') }}" class="menu-link">
+                    <div data-i18n="Without menu">CATEGORY</div>
+                  </a>
+                </li>
+                <li class="menu-item @if ($subpage == 'subcategory') active open @endif">
+                  <a href="{{ route('settings.subcategory') }}" class="menu-link">
+                    <div data-i18n="Without navbar">SUB CATEGORY</div>
+                  </a>
+                </li>
+              </ul>
             </li>
 
           </ul>
