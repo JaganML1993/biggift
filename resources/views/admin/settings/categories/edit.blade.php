@@ -17,7 +17,7 @@
         <div class="col-xxl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="{{ route('update.category') }}" method="POST">
+                    <form action="{{ route('update.category') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
@@ -25,6 +25,13 @@
                                 <input type="hidden" name="id" value="{{$data->id}}">
                                 <label class="col-form-label" for="basic-default-name">Category<span class="required_star">*</span></label>
                                 <input type="text" class="form-control" value="{{ $data->name }}" required name="name" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="basic-default-name">Category Image<span class="required_star">*</span></label>
+                                <input type="file" class="form-control" required name="image" accept="image/png, image/jpeg">
+                                @if ($data->image)
+                                <a href="{{ url('').'/'.$data->image }}" target="_blank"><img src="{{ url('').'/'.$data->image }}" style="width:40%"></a>
+                                @endif
                             </div>
                             <div class="col-md-4">
                                 <label class="col-form-label" for="basic-default-name">Status<span class="required_star">*</span></label>

@@ -7,6 +7,7 @@ use App\Models\admin\Category;
 use App\Models\admin\SubCategory;
 use App\Models\admin\Brands;
 use Illuminate\Http\Request;
+use File;
 
 class SettingsController extends Controller
 {
@@ -45,8 +46,13 @@ class SettingsController extends Controller
      */
     public function store(Request $request)
     {
+        $folder = 'uploads/category';
+        
+        $save_name = $this->saveFile($folder,$request->image);
+
         $insert_data = array(
             'name' => $request->name,
+            'image' => $save_name,
             'status' => $request->status,
         );
 
@@ -58,6 +64,18 @@ class SettingsController extends Controller
         }
 
         return redirect("admin/category-settings")->withSuccess($msg);
+    }
+
+    public function saveFile($folder,$request_image){
+
+        $path = public_path($folder);
+        if(!File::isDirectory($path)){
+            File::makeDirectory($path, 0777, true, true);
+        }
+
+        $fileName = time().'_'.random_int(100000, 999999).'.'.$request_image->extension();  
+        $request_image->move($path, $fileName);
+        return $folder.'/'.$fileName;
     }
 
     /**
@@ -84,8 +102,12 @@ class SettingsController extends Controller
      */
     public function update(Request $request)
     {
+        $folder = 'uploads/category';
+        $save_name = $this->saveFile($folder,$request->image);
+
         $update_data = array(
             'name' => $request->name,
+            'image' => $save_name,
             'status' => $request->status,
         );
 

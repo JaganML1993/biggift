@@ -50,6 +50,8 @@ Route::prefix('admin')->group(function () {
     Route::post('update-subcategory', [SettingsController::class, 'update_subcategory'])->name('update.subcategory'); 
     Route::get('delete-subcategory/{id}', [SettingsController::class, 'destroy_subcategory'])->name('delete.subcategory');
 
+    Route::get('brand-settings', [SettingsController::class, 'index_brand'])->name('settings.brand');
+
 });
 
 /** user application routes */

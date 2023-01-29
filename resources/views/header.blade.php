@@ -138,6 +138,11 @@ if(isset($title)){
                     <div data-i18n="Without navbar">SUB CATEGORY</div>
                   </a>
                 </li>
+                <li class="menu-item @if ($subpage == 'brand') active open @endif">
+                  <a href="{{ route('settings.brand') }}" class="menu-link">
+                    <div data-i18n="Without navbar">Brand</div>
+                  </a>
+                </li>
               </ul>
             </li>
 

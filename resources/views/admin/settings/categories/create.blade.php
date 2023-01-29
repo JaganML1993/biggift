@@ -17,13 +17,17 @@
         <div class="col-xxl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="{{ route('save.category') }}" method="POST">
+                    <form action="{{ route('save.category') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <label class="col-form-label" for="basic-default-name">Category<span class="required_star">*</span></label>
                                 <input type="text" class="form-control" required name="name" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-form-label" for="basic-default-name">Category Image<span class="required_star">*</span></label>
+                                <input type="file" class="form-control" required name="image" accept="image/png, image/jpeg">
                             </div>
                             <div class="col-md-4">
                                 <label class="col-form-label" for="basic-default-name">Status<span class="required_star">*</span></label>
