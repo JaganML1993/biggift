@@ -63,6 +63,8 @@ Route::prefix('admin')->group(function () {
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('biggift.index');
     Route::get('contact/', [HomeController::class, 'contactus'])->name('biggift.contactus');
+    Route::get('corporate-biggift/', [HomeController::class, 'corporate_index'])->name('corporate.biggift');
+    Route::get('corporate-catalog/', [HomeController::class, 'corporate_catalog'])->name('corporate.catalog');
 });
 
 

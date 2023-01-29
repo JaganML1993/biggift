@@ -86,4 +86,12 @@ class HomeController extends Controller
     public function contactus() {
         return view('biggift.contactus');
     }
+
+    public function corporate_index(){
+        return view('biggift.corporate');
+    }
+
+    public function corporate_catalog(){
+        return view('biggift.corporate_index');
+    }
 }
