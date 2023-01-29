@@ -51,6 +51,11 @@ Route::prefix('admin')->group(function () {
     Route::get('delete-subcategory/{id}', [SettingsController::class, 'destroy_subcategory'])->name('delete.subcategory');
 
     Route::get('brand-settings', [SettingsController::class, 'index_brand'])->name('settings.brand');
+    Route::get('create-brand', [SettingsController::class, 'create_brand'])->name('create.brand');
+    Route::post('save-brand', [SettingsController::class, 'store_brand'])->name('save.brand'); 
+    Route::get('edit-brand/{id}', [SettingsController::class, 'edit_brand'])->name('edit.brand');
+    Route::post('update-brand', [SettingsController::class, 'update_brand'])->name('update.brand'); 
+    Route::get('delete-brand/{id}', [SettingsController::class, 'destroy_brand'])->name('delete.brand');
 
 });
 

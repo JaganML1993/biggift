@@ -52,7 +52,7 @@ class SettingsController extends Controller
 
         $insert_data = array(
             'name' => $request->name,
-            'image' => $save_name,
+            'image' => '/'.$save_name,
             'status' => $request->status,
         );
 
@@ -102,14 +102,17 @@ class SettingsController extends Controller
      */
     public function update(Request $request)
     {
-        $folder = 'uploads/category';
-        $save_name = $this->saveFile($folder,$request->image);
 
         $update_data = array(
             'name' => $request->name,
-            'image' => $save_name,
             'status' => $request->status,
         );
+
+        if($request->image){
+            $folder = 'uploads/category';
+            $save_name = $this->saveFile($folder,$request->image);
+            $update_data['image'] = '/'.$save_name;
+        }
 
         Category::where('id', $request->id)
         ->update($update_data);
@@ -193,5 +196,78 @@ class SettingsController extends Controller
     {
         $deleted = SubCategory::where('id', $id)->delete();
         return redirect("admin/subcategory-settings")->withSuccess("Sub Category Deleted Successfully");
+    }
+
+    public function index_brand()
+    {
+        $data = Brands::get();
+        $page = 'settings';
+        $subpage = 'brand';
+        $title = "Brand";
+        return view('admin.settings.brands.index',compact('page','subpage','title','data'));
+    }
+
+    public function create_brand()
+    {
+        $page = 'settings';
+        $subpage = 'brand';
+        $title = "Brand";
+        return view('admin.settings.brands.create',compact('page','subpage','title'));
+    }
+
+    public function store_brand(Request $request)
+    {
+        $folder = 'uploads/brand';
+        
+        $save_name = $this->saveFile($folder,$request->image);
+
+        $insert_data = array(
+            'name' => $request->name,
+            'image' => '/'.$save_name,
+            'status' => $request->status,
+        );
+
+        $category = Brands::create($insert_data);
+        if($category){
+            $msg = 'Brand saved successfully';
+        }else{
+            $msg = 'Something went wrong, please try again';
+        }
+
+        return redirect("admin/brand-settings")->withSuccess($msg);
+    }
+
+    public function edit_brand($id)
+    {
+        $data = Brands::where('id',$id)->first();
+        $page = 'settings';
+        $subpage = 'brand';
+        $title = "Brand";
+        return view('admin.settings.brands.edit',compact('page','subpage','title','data'));
+    }
+
+    public function update_brand(Request $request)
+    {
+        $update_data = array(
+            'name' => $request->name,
+            'status' => $request->status,
+        );
+
+        if($request->image){
+            $folder = 'uploads/brand';
+            $save_name = $this->saveFile($folder,$request->image);
+            $update_data['image'] = '/'.$save_name;
+        }
+
+        Brands::where('id', $request->id)
+        ->update($update_data);
+
+        return redirect("admin/brand-settings")->withSuccess("Brand Updated Successfully");
+    }
+
+    public function destroy_brand($id)
+    {
+        $deleted = Brands::where('id', $id)->delete();
+        return redirect("admin/brand-settings")->withSuccess("Brand Deleted Successfully");
     }
 }

@@ -140,7 +140,7 @@ if(isset($title)){
                 </li>
                 <li class="menu-item @if ($subpage == 'brand') active open @endif">
                   <a href="{{ route('settings.brand') }}" class="menu-link">
-                    <div data-i18n="Without navbar">Brand</div>
+                    <div data-i18n="Without navbar">BRAND</div>
                   </a>
                 </li>
               </ul>

@@ -9,7 +9,7 @@
 </style>
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4">Edit Category</h4>
+    <h4 class="fw-bold py-3 mb-4">Edit Brand</h4>
 
     <!-- Basic Layout & Basic with Icons -->
     <div class="row">
@@ -17,13 +17,13 @@
         <div class="col-xxl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="{{ route('update.category') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('update.brand') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <input type="hidden" name="id" value="{{$data->id}}">
-                                <label class="col-form-label" for="basic-default-name">Category<span class="required_star">*</span></label>
+                                <label class="col-form-label" for="basic-default-name">Brand<span class="required_star">*</span></label>
                                 <input type="text" class="form-control" value="{{ $data->name }}" required name="name" />
                             </div>
                             @php
@@ -34,7 +34,7 @@
                             }
                             @endphp
                             <div class="col-md-4">
-                                <label class="col-form-label" for="basic-default-name">Category Image<span class="required_star">*</span></label>
+                                <label class="col-form-label" for="basic-default-name">Brand Logo<span class="required_star">*</span></label>
                                 <input type="file" class="form-control" {{ $required }} name="image" accept="image/png, image/jpeg">
                                 @if ($data->image)
                                 <a href="{{ url('').$data->image }}" target="_blank"><img src="{{ url('').$data->image }}" style="width:40%"></a>
