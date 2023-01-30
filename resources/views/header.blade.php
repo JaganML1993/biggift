@@ -122,6 +122,26 @@ if(isset($title)){
               </a>
             </li>
 
+            <li class="menu-item @if ($page == 'products') active open @endif" >
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <div data-i18n="Layouts">PRODUCTS</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item @if ($subpage == 'product_ecom') active open @endif">
+                  <a href="{{ route('products.ecom.index') }}" class="menu-link">
+                    <div data-i18n="Without menu">E-COMMERCE</div>
+                  </a>
+                </li>
+                <li class="menu-item @if ($subpage == 'product_micro') active open @endif">
+                  <a href="#" class="menu-link">
+                    <div data-i18n="Without navbar">MICROSITE</div>
+                  </a>
+                </li>
+              </ul>
+
+            </li>
+
             <li class="menu-item @if ($page == 'settings') active open @endif" >
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <div data-i18n="Layouts">SETTINGS</div>
@@ -240,8 +260,8 @@ if(isset($title)){
                   <script>
                     document.write(new Date().getFullYear());
                   </script>
-                  , made with ❤️ by
-                  <a href="http://www.vyomann.com" target="_blank" class="footer-link fw-bolder">Vyomann Aviation</a>
+                  made with ❤️ by
+                  <a href="http://www.vyomann.com" target="_blank" class="footer-link fw-bolder">BIG GIFT</a>
                 </div>
                
               </div>

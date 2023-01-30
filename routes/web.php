@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 /** admin */
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\SettingsController;
+use App\Http\Controllers\admin\ProductsController;
 
 /** user */
 use App\Http\Controllers\HomeController;
@@ -35,6 +36,10 @@ Route::prefix('admin')->group(function () {
     Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
     Route::get('dashboard', [AuthController::class, 'dashboard']); 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('products-ecom-index', [ProductsController::class, 'index'])->name('products.ecom.index');
+    Route::get('products-ecom-create', [ProductsController::class, 'create'])->name('products.ecom.create');
+    Route::post('products-ecom-store', [ProductsController::class, 'store'])->name('products.ecom.store'); 
 
     Route::get('category-settings', [SettingsController::class, 'index'])->name('settings.category');
     Route::get('create-category', [SettingsController::class, 'create'])->name('create.category');
