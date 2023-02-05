@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\admin\ProductsController;
+use App\Http\Controllers\admin\HomeDeliveryController;
 
 /** user */
 use App\Http\Controllers\HomeController;
@@ -37,14 +38,23 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', [AuthController::class, 'dashboard']); 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
+    /** corporate gift products */
     Route::get('products-ecom-index', [ProductsController::class, 'index'])->name('products.ecom.index');
     Route::get('products-ecom-create', [ProductsController::class, 'create'])->name('products.ecom.create');
     Route::post('products-ecom-store', [ProductsController::class, 'store'])->name('products.ecom.store'); 
     Route::get('products-ecom-edit/{id}', [ProductsController::class, 'edit'])->name('products.ecom.edit'); 
     Route::post('products-ecom-update', [ProductsController::class, 'update'])->name('products.ecom.update'); 
     Route::get('products-ecom-delete/{id}', [ProductsController::class, 'delete'])->name('products.ecom.delete'); 
-
     Route::get('products-ecom-delete_image/{id}', [ProductsController::class, 'delete_image'])->name('products.ecom.delete_image'); 
+
+    /** home delivery products */
+    Route::get('products-home_delivery-index', [HomeDeliveryController::class, 'index'])->name('products.home_delivery.index');
+    Route::get('products-home_delivery-create', [HomeDeliveryController::class, 'create'])->name('products.home_delivery.create');
+    Route::post('products-home_delivery-store', [HomeDeliveryController::class, 'store'])->name('products.home_delivery.store'); 
+    Route::get('products-home_delivery-edit/{id}', [HomeDeliveryController::class, 'edit'])->name('products.home_delivery.edit'); 
+    Route::post('products-home_delivery-update', [HomeDeliveryController::class, 'update'])->name('products.home_delivery.update'); 
+    Route::get('products-home_delivery-delete/{id}', [HomeDeliveryController::class, 'delete'])->name('products.home_delivery.delete'); 
+    Route::get('products-home_delivery-delete_image/{id}', [HomeDeliveryController::class, 'delete_image'])->name('products.home_delivery.delete_image'); 
 
     Route::get('category-settings', [SettingsController::class, 'index'])->name('settings.category');
     Route::get('create-category', [SettingsController::class, 'create'])->name('create.category');

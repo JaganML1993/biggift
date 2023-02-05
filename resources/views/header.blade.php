@@ -124,22 +124,30 @@ if(isset($title)){
 
             <li class="menu-item @if ($page == 'products') active open @endif" >
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <div data-i18n="Layouts">PRODUCTS</div>
+                <div data-i18n="Layouts">CORPORATE GIFTS</div>
               </a>
 
               <ul class="menu-sub">
                 <li class="menu-item @if ($subpage == 'product_ecom') active open @endif">
                   <a href="{{ route('products.ecom.index') }}" class="menu-link">
-                    <div data-i18n="Without menu">E-COMMERCE</div>
-                  </a>
-                </li>
-                <li class="menu-item @if ($subpage == 'product_micro') active open @endif">
-                  <a href="#" class="menu-link">
-                    <div data-i18n="Without navbar">MICROSITE</div>
+                    <div data-i18n="Without menu">PRODUCTS</div>
                   </a>
                 </li>
               </ul>
+            </li>
 
+            <li class="menu-item @if ($page == 'products_home') active open @endif" >
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <div data-i18n="Layouts">HOME DELIVERY</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item @if ($subpage == 'product_home_delivery') active open @endif">
+                  <a href="{{ route('products.home_delivery.index') }}" class="menu-link">
+                    <div data-i18n="Without menu">PRODUCTS</div>
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <li class="menu-item @if ($page == 'settings') active open @endif" >
