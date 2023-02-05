@@ -18,14 +18,62 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Brand Name</th>
+                        <th>Product Name</th>
+                        <th>SKU</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Sub Category</th>
+                        <th>Brand</th>
+                        <th>Color</th>
+                        <th>Thumbnail</th>
                         <th>Status</th>
                         <th>Created On</th>
                         <th>ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                   
+                    @php
+                        $i = 1; 
+                    @endphp
+                    @foreach ($products as $item)
+                    @php
+                        if($item->status == 1){
+                            $status = '<span class="badge bg-label-success me-1">Active</span>';
+                        }else{
+                            $status = '<span class="badge bg-label-warning me-1">In-Active</span>';
+                        }
+                    @endphp
+                    <tr>
+                        <td>{{ $i }}</td>
+                        <td>{{ $item->name }} </td>
+                        <td>{{ $item->sku }} </td>
+                        <td>&#8377;{{ $item->price }} </td>
+                        <td>{{ $item->categoryname }} </td>
+                        <td>{{ $item->subcategoryname }} </td>
+                        <td>{{ $item->brandname }} </td>
+                        <td> <div data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $item->color }}" style="height:20px; width:20px; background-color:{{$item->color_code}}; border-radius: 5px;"></div></td>
+                        <td><a href="{{ url('').$item->thumbnail }}" target="_blank"><img src="{{ url('').$item->thumbnail }}" style="width:30%;" alt="product image"></a></td>
+                        <td><?php echo $status ?></td>
+                        <td>{{ date('d-m-Y',strtotime($item->created_at)) }}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ route('products.ecom.edit',$item->id) }}"><i
+                                    class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('products.ecom.delete',$item->id) }}"><i class="bx bx-trash me-1"></i>
+                                    Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    @php
+                        $i++; 
+                    @endphp
+                    @endforeach
                 </tbody>
             </table>
         </div>

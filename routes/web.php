@@ -40,6 +40,11 @@ Route::prefix('admin')->group(function () {
     Route::get('products-ecom-index', [ProductsController::class, 'index'])->name('products.ecom.index');
     Route::get('products-ecom-create', [ProductsController::class, 'create'])->name('products.ecom.create');
     Route::post('products-ecom-store', [ProductsController::class, 'store'])->name('products.ecom.store'); 
+    Route::get('products-ecom-edit/{id}', [ProductsController::class, 'edit'])->name('products.ecom.edit'); 
+    Route::post('products-ecom-update', [ProductsController::class, 'update'])->name('products.ecom.update'); 
+    Route::get('products-ecom-delete/{id}', [ProductsController::class, 'delete'])->name('products.ecom.delete'); 
+
+    Route::get('products-ecom-delete_image/{id}', [ProductsController::class, 'delete_image'])->name('products.ecom.delete_image'); 
 
     Route::get('category-settings', [SettingsController::class, 'index'])->name('settings.category');
     Route::get('create-category', [SettingsController::class, 'create'])->name('create.category');

@@ -115,9 +115,10 @@
 
                             <div class="col-md-4">
                                 <label class="col-form-label" for="basic-default-name">Related Products</label>
-                                <select class="form-control" name="related_products">
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
+                                <select class="form-control" name="related_products[]" multiple="multiple">
+                                    @foreach ($products as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
