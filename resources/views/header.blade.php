@@ -122,7 +122,7 @@ if(isset($title)){
               </a>
             </li>
 
-            <li class="menu-item @if ($page == 'products') active open @endif" >
+            <li class="menu-item @if ($page == 'products') active @endif" >
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <div data-i18n="Layouts">CORPORATE GIFTS</div>
               </a>
@@ -136,7 +136,7 @@ if(isset($title)){
               </ul>
             </li>
 
-            <li class="menu-item @if ($page == 'products_home') active open @endif" >
+            <li class="menu-item @if ($page == 'products_home') active @endif" >
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <div data-i18n="Layouts">HOME DELIVERY</div>
               </a>
