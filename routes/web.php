@@ -56,6 +56,11 @@ Route::prefix('admin')->group(function () {
     Route::get('products-home_delivery-delete/{id}', [HomeDeliveryController::class, 'delete'])->name('products.home_delivery.delete'); 
     Route::get('products-home_delivery-delete_image/{id}', [HomeDeliveryController::class, 'delete_image'])->name('products.home_delivery.delete_image'); 
 
+    /** home delivery enquiry */
+    Route::get('homeDelivery-enquiry-index', [HomeDeliveryController::class, 'index_enquiry'])->name('homeDelivery.enquiry.index_enquiry');
+    Route::get('homeDelivery-enquiry-view/{id}', [HomeDeliveryController::class, 'view_enquiry'])->name('homeDelivery.enquiry.view_enquiry');
+    Route::post('homeDelivery-enquiry-update', [HomeDeliveryController::class, 'update_enquiry'])->name('homeDelivery.enquiry.update_enquiry');
+
     Route::get('category-settings', [SettingsController::class, 'index'])->name('settings.category');
     Route::get('create-category', [SettingsController::class, 'create'])->name('create.category');
     Route::post('save-category', [SettingsController::class, 'store'])->name('save.category'); 

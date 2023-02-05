@@ -241,4 +241,38 @@ class HomeDeliveryController extends Controller
             return redirect()->back()->with('success', 'Product Image Deleted Successfully');
         }
     }
+
+    public function index_enquiry()
+    {
+        $data = CompanyHomeDelivery::get();
+
+        $page = 'products_home';
+        $subpage = 'home_delivery';
+        $title = "Products";
+        return view('admin.homeDelivery.enquiry.index',compact('page','subpage','title','data'));
+    }
+
+    public function view_enquiry($id)
+    {
+        $data = CompanyHomeDelivery::where('id',$id)->first();
+
+        $page = 'products_home';
+        $subpage = 'home_delivery';
+        $title = "Products";
+        return view('admin.homeDelivery.enquiry.view',compact('page','subpage','title','data'));
+    }
+
+    public function update_enquiry(Request $request){
+        $update_data = array(
+            'status' => $request->status,
+            'approval' => $request->approval,
+        );
+
+        CompanyHomeDelivery::where('id', $request->id)
+            ->update($update_data);
+
+        $msg = 'Product updated successfully';
+        return redirect("admin/homeDelivery-enquiry-index")->withSuccess($msg);
+    }
+
 }

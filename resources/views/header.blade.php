@@ -147,7 +147,13 @@ if(isset($title)){
                     <div data-i18n="Without menu">PRODUCTS</div>
                   </a>
                 </li>
+                <li class="menu-item @if ($subpage == 'home_delivery') active open @endif">
+                  <a href="{{ route('homeDelivery.enquiry.index_enquiry') }}" class="menu-link">
+                    <div data-i18n="Without menu">ENQUIRIES</div>
+                  </a>
+                </li> 
               </ul>
+
             </li>
 
             <li class="menu-item @if ($page == 'settings') active open @endif" >
